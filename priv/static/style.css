@@ -47,3 +47,7 @@ header h2{
 	justify-content: space-evenly;
 	background-color: lightskyblue;
 }
+
+.div_block a{
+	text-decoration: none; 
+}

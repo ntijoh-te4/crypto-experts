@@ -7,9 +7,11 @@ header
 
 h2 = "Schools"
 // GÖR DYNAMISK
-div class="div_block"
-    a href="stor_ph"
+a href="stor_ph"
+    div class="div_block"
         h2 = "School_name"
         div class="div_links"
             a href="placeholder" Edit
             a href="placeholder" Remove
+
+        
