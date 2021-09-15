@@ -36,6 +36,7 @@ defmodule Pluggy.Router do
   get("/teacher/game/index", do: FruitController.teacher_game_index(conn))
   get("/teacher/game/correct", do: FruitController.teacher_game_correct(conn))
   get("/teacher/game/wrong", do: FruitController.teacher_game_wrong(conn))
+  get("/login", do: FruitController.login(conn))
 
 
 
