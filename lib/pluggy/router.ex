@@ -30,6 +30,8 @@ defmodule Pluggy.Router do
 
   get("/admin/index", do: FruitController.index(conn))
   get("/admin/school", do: FruitController.school(conn))
+  get("/admin/class", do: FruitController.school_class(conn))
+
   get("/fruits/new", do: FruitController.new(conn))
   get("/fruits/:id", do: FruitController.show(conn, id))
   get("/fruits/:id/edit", do: FruitController.edit(conn, id))

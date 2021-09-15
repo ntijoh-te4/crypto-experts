@@ -35,6 +35,20 @@ defmodule Pluggy.FruitController do
       send_resp(conn, 200, srender("admin/school", fruits: Fruit.all(), user: current_user))
     end
 
+    #??????????
+    def school_class(conn) do
+      # get user if logged in
+      session_user = conn.private.plug_session["user_id"]
+
+      current_user =
+        case session_user do
+          nil -> nil
+          _ -> User.get(session_user)
+        end
+
+      #srender använder slime
+      send_resp(conn, 200, srender("admin/class", fruits: Fruit.all(), user: current_user))
+    end
   #render använder eex
 
   def new(conn), do: send_resp(conn, 200, render("fruits/new", []))
