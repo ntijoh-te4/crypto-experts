@@ -26,9 +26,10 @@ defmodule Pluggy.Router do
   plug(:match)
   plug(:dispatch)
 
-  get("/users/login", do: FruitController.index(conn))
+  #get("/users/login", do: send_resp(conn, 200, srender("login")))
 
-  get("/fruits", do: FruitController.index(conn))
+  get("/admin/index", do: FruitController.index(conn))
+  get("/admin/school", do: FruitController.school(conn))
   get("/fruits/new", do: FruitController.new(conn))
   get("/fruits/:id", do: FruitController.show(conn, id))
   get("/fruits/:id/edit", do: FruitController.edit(conn, id))
