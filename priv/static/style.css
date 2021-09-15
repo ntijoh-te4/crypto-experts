@@ -34,7 +34,9 @@ header h2{
 	height: 20%;
 	font-size: 20px;
 }
-
+.title{
+	text-align: center;
+}
 .div_block{
 	border-style: solid;
 	border-radius: 5%;
