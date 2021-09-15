@@ -1,0 +1,18 @@
+p="fibi easteregg"
+header
+    h1 = "WHAT'S THEIR FACE"
+    /Gör dynamisk v
+    h2 = "John Doe" 
+    / Länka till logga ut funktion
+    a href="default.asp" LOG OUT 
+
+h1 class="title" School_name
+h2 class="title" class_name
+// GÖR DYNAMISK
+a href="stor_ph"
+    div class="div_block"
+        img src="teacher_img"
+        h2 = "student_name"
+        div class="div_links"
+            a href="placeholder" Edit
+            a href="placeholder" Remove
