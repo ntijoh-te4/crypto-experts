@@ -1,10 +1,10 @@
 defmodule Pluggy.Fruit do
-  defstruct(id: nil, name: "", tastiness: "")
+  defstruct(id: nil, name: "")
 
   alias Pluggy.Fruit
 
   def all do
-    Postgrex.query!(DB, "SELECT * FROM fruits", [], pool: DBConnection.ConnectionPool).rows
+    Postgrex.query!(DB, "SELECT * FROM schools", [], pool: DBConnection.ConnectionPool).rows
     |> to_struct_list
   end
 
@@ -44,10 +44,10 @@ defmodule Pluggy.Fruit do
   end
 
   def to_struct([[id, name, tastiness]]) do
-    %Fruit{id: id, name: name, tastiness: tastiness}
+    %Fruit{id: id, name: name}
   end
 
   def to_struct_list(rows) do
-    for [id, name, tastiness] <- rows, do: %Fruit{id: id, name: name, tastiness: tastiness}
+    for [id, name] <- rows, do: %Fruit{id: id, name: name}
   end
 end

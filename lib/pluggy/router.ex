@@ -5,7 +5,7 @@ defmodule Pluggy.Router do
 
   alias Pluggy.FruitController
   alias Pluggy.UserController
-
+  alias Pluggy.SchoolController
 
 
   plug(Plug.Static, at: "/", from: :pluggy)
@@ -29,7 +29,7 @@ defmodule Pluggy.Router do
   #get("/users/login", do: send_resp(conn, 200, srender("login")))
 
   get("/admin/index", do: FruitController.index(conn))
-  get("/admin/school", do: FruitController.school(conn))
+  get("/admin/school", do: SchoolController.school(conn))
   get("/admin/class", do: FruitController.school_class(conn))
   get("/teacher/index", do: FruitController.teacher_index(conn))
   get("/teacher/class", do: FruitController.teacher_class(conn))
