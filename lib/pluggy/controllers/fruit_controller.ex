@@ -15,10 +15,26 @@ defmodule Pluggy.FruitController do
         nil -> nil
         _ -> User.get(session_user)
       end
-
     #srender använder slime
     send_resp(conn, 200, srender("admin/index", fruits: Fruit.all(), user: current_user))
   end
+
+
+
+    # TA BORT GÖR OM????
+    def login(conn) do
+      # get user if logged in
+      session_user = conn.private.plug_session["user_id"]
+
+      current_user =
+        case session_user do
+          nil -> nil
+          _ -> User.get(session_user)
+        end
+
+      #srender använder slime
+      send_resp(conn, 200, srender("login", fruits: Fruit.all(), user: current_user))
+    end
 
 
     #fixa?????
