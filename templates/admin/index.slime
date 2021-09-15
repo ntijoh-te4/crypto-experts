@@ -4,3 +4,12 @@ header
     h2 = "John Doe" 
     / Länka till logga ut funktion
     a href="default.asp" LOG OUT 
+
+h2 = "Schools"
+// GÖR DYNAMISK
+div class="div_block"
+    a href="stor_ph"
+        h2 = "School_name"
+        div class="div_links"
+            a href="placeholder" Edit
+            a href="placeholder" Remove

@@ -34,3 +34,16 @@ header h2{
 	height: 20%;
 	font-size: 20px;
 }
+
+.div_block{
+	border-style: solid;
+	border-radius: 5%;
+	border-color: black;
+	width: 20%;
+}
+
+.div_links{
+	display: flex;
+	justify-content: space-evenly;
+	background-color: lightskyblue;
+}
