@@ -17,6 +17,7 @@ defmodule Pluggy.FruitController do
       end
     #srender använder slime
     send_resp(conn, 200, srender("admin/index", fruits: Fruit.all(), user: current_user))
+  end
     end
     # TA BORT GÖR OM????
     def login(conn) do
