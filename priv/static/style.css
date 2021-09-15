@@ -1,8 +1,36 @@
 body {
-	background-color: peachpuff;
+	background-color: white;
 }
-header {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-  }
+header{
+	height: 80px;
+	width: 100%;
+	background-color: steelblue;
+	display: flex;
+	color: white;
+}
+header a{
+	padding: 1.2%;
+	height: 20%;
+	margin-bottom: auto;
+	margin-top: auto;
+	margin-right: 4%;
+	margin-left: auto;
+	color: white;
+	text-decoration: none;
+}
+header h1{
+	margin-left: 2%;
+	margin-right: 40%;
+}
+header h2{
+	margin-right: 0px;
+	margin-left: auto;
+	margin-bottom: auto;
+	margin-top: auto;
+	background-color: white;
+	padding: 20px;
+	color: lightskyblue;
+	width: 12%;
+	height: 20%;
+	font-size: 20px;
+}

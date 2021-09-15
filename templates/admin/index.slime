@@ -1,1 +1,6 @@
-p="bajs"
+header
+    h1 = "WHAT'S THEIR FACE"
+    /Gör dynamisk v
+    h2 = "John Doe" 
+    / Länka till logga ut funktion
+    a href="default.asp" LOG OUT 
