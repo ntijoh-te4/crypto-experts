@@ -81,7 +81,42 @@ header h2{
 }
 .title{
 	text-align: center;
+	color: steelblue;
 }
 a{
 	text-decoration: none;
+}
+
+.game{
+	width: 60%;
+	margin-right: auto;
+	margin-left: auto;
+	list-style-type: none;
+}
+.game div{
+	display: flex;
+	padding: 2%;
+}
+.game img{
+	height: 400px;
+}
+.alternatives{
+	padding: 4%;
+	margin-left: 4%;
+	font-size: 40px;
+	width: 40%;
+	display: flex;
+	flex-wrap: wrap;
+}
+.alternatives a{
+	background-color:steelblue;
+	width: 100%;
+	font-size: 20px;
+	width: 80%;
+	margin-top: 4%;
+	margin-bottom: 4%;
+	padding: 2%;
+	height: 28px;
+	border-radius: 8px;
+	color: white;
 }
