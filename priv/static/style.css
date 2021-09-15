@@ -79,3 +79,9 @@ header h2{
 	justify-content: space-evenly;
 	background-color: lightskyblue;
 }
+.title{
+	text-align: center;
+}
+a{
+	text-decoration: none;
+}
