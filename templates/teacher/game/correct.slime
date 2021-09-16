@@ -4,3 +4,13 @@ header
     h2 = "John Doe" 
     / Länka till logga ut funktion
     a href="default.asp" LOG OUT 
+
+div class="game"
+    h1 class="title" school_class (School_name)
+    div
+        img src="student_img"
+        li class="alternatives"
+            a style="background-color:green;" CORRECT
+            a style="background-color:green;" correct_student_name
+            a href="index" next
+    p class="title" = "x out of x correct"
