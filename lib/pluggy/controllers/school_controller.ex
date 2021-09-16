@@ -3,6 +3,7 @@ defmodule Pluggy.SchoolController do
 
   alias Pluggy.School
   alias Pluggy.User
+  alias Pluggy.Class
 
   import Pluggy.Template, only: [srender: 2]
   import Plug.Conn, only: [send_resp: 3]
@@ -17,9 +18,11 @@ defmodule Pluggy.SchoolController do
         nil -> nil
         _ -> User.get(session_user)
       end
+    school = School.get(id)
+    classes = Class.all_school_classes(id)
 
     #srender använder slime
-    send_resp(conn, 200, srender("admin/school", school: School.get(id), user: current_user))
+    send_resp(conn, 200, srender("admin/school", school: school, classes: classes, user: current_user))
   end
 
   def index(conn) do
@@ -54,7 +57,7 @@ defmodule Pluggy.SchoolController do
 
 
     #??????????
-    def school_class(conn) do
+    def school_class(conn, id) do
       # get user if logged in
       session_user = conn.private.plug_session["user_id"]
 
