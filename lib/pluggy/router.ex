@@ -3,7 +3,6 @@ defmodule Pluggy.Router do
   use Plug.Debugger
 
 
-  alias Pluggy.FruitController
   alias Pluggy.UserController
   alias Pluggy.SchoolController
 
@@ -37,7 +36,7 @@ defmodule Pluggy.Router do
   get("/teacher/game/index", do: SchoolController.teacher_game_index(conn))
   get("/teacher/game/correct", do: SchoolController.teacher_game_correct(conn))
   get("/teacher/game/wrong", do: SchoolController.teacher_game_wrong(conn))
-  get("/login", do: FruitController.login(conn))
+  get("/login", do: UserController.login(conn))
 
 
 
