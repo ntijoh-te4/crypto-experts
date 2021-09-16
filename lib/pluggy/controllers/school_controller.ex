@@ -29,14 +29,7 @@ defmodule Pluggy.SchoolController do
         _ -> User.get(session_user)
       end
 
-
-
    send_resp(conn, 200, srender("admin/index", schools: School.all(), user: current_user))
   end
-
-
-
-
-
 
 end
