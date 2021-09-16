@@ -1,33 +1,48 @@
 defmodule Pluggy.UserController do
   # import Pluggy.Template, only: [render: 2] #det här exemplet renderar inga templates
+  import Pluggy.Template, only: [srender: 2]
   import Plug.Conn, only: [send_resp: 3]
+
+  alias Pluggy.User
+
+  def login(conn) do
+      # get user if logged in
+      session_user = conn.private.plug_session["user_id"]
+
+      current_user =
+        case session_user do
+          nil -> nil
+          _ -> User.get(session_user)
+        end
+
+      #srender använder slime
+      send_resp(conn, 200, srender("login", user: current_user))
+    end
 
   def login(conn, params) do
     username = params["username"]
     password = params["pwd"]
 
-     #Bör antagligen flytta SQL-anropet till user-model (t.ex User.find)
-    result =
-      Postgrex.query!(DB, "SELECT id, password_hash FROM users WHERE username = $1", [username],
-        pool: DBConnection.ConnectionPool
-      )
+    user = User.get_user(username)
 
-    case result.num_rows do
-      # no user with that username
-      0 ->
-        redirect(conn, "/teacher/index")
-      # user with that username exists
-      _ ->
-        [[id, password_hash]] = result.rows
-
-        # make sure password is correct
-        if Bcrypt.verify_pass(password, password_hash) do
-          Plug.Conn.put_session(conn, :user_id, id)
-          |> redirect("/teacher/index") #skicka vidare modifierad conn
+    #fixa felmeddelanden
+    if user.id do
+      if password == user.pwd do
+        if user.id == 1 do
+          Plug.Conn.put_session(conn, :user_id, user.id)
+          |> redirect("/admin/index") #skicka vidare modifierad conn
         else
-          redirect(conn, "/teacher/index")
+          Plug.Conn.put_session(conn, :user_id, user.id)
+          |> redirect("/teacher/index") #skicka vidare modifierad conn
         end
+      else
+        redirect(conn, "/login")
+      end
+    else
+      redirect(conn, "/login")
     end
+
+
   end
 
   def logout(conn) do
