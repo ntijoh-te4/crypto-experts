@@ -30,12 +30,12 @@ defmodule Pluggy.Router do
 
   get("/admin/index", do: SchoolController.index(conn))
   get("/admin/school/:id", do: SchoolController.school(conn, id))
-  get("/admin/class", do: FruitController.school_class(conn))
-  get("/teacher/index", do: FruitController.teacher_index(conn))
-  get("/teacher/class", do: FruitController.teacher_class(conn))
-  get("/teacher/game/index", do: FruitController.teacher_game_index(conn))
-  get("/teacher/game/correct", do: FruitController.teacher_game_correct(conn))
-  get("/teacher/game/wrong", do: FruitController.teacher_game_wrong(conn))
+  get("/admin/class", do: SchoolController.school_class(conn))
+  get("/teacher/index", do: SchoolController.teacher_index(conn))
+  get("/teacher/class", do: SchoolController.teacher_class(conn))
+  get("/teacher/game/index", do: SchoolController.teacher_game_index(conn))
+  get("/teacher/game/correct", do: SchoolController.teacher_game_correct(conn))
+  get("/teacher/game/wrong", do: SchoolController.teacher_game_wrong(conn))
   get("/login", do: FruitController.login(conn))
 
 
