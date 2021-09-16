@@ -3,7 +3,9 @@ header
     /Gör dynamisk v
     h2 = "John Doe" 
     / Länka till logga ut funktion
-    a href="default.asp" LOG OUT 
+    div class="log_out"
+        form action="/logout" method="post"
+            button type="submit" Log out 
 
 div class="game"
     h1 class="title" school_class (School_name)

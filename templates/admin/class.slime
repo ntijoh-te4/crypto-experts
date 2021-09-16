@@ -1,10 +1,11 @@
-p="fibi easteregg"
 header
     h1 = "WHAT'S THEIR FACE"
     /Gör dynamisk v
     h2 = "John Doe" 
     / Länka till logga ut funktion
-    a href="default.asp" LOG OUT 
+    div class="log_out"
+        form action="/logout" method="post"
+            button type="submit" Log out
 
 h1 class="title" School_name
 h2 class="title" class_name
