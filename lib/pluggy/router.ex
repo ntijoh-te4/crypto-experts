@@ -54,7 +54,7 @@ defmodule Pluggy.Router do
   # post("/fruits/:id/destroy", do: FruitController.destroy(conn, id))
 
   post("/login", do: UserController.login(conn, conn.body_params))
-  post("/users/logout", do: UserController.logout(conn))
+  post("/logout", do: UserController.logout(conn))
 
   match _ do
     send_resp(conn, 404, "oops")

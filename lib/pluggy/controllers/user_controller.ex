@@ -47,7 +47,7 @@ defmodule Pluggy.UserController do
 
   def logout(conn) do
     Plug.Conn.configure_session(conn, drop: true) #tömmer sessionen
-    |> redirect("/fruits")
+    |> redirect("/login")
   end
 
   # def create(conn, params) do
