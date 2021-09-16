@@ -36,7 +36,7 @@ defmodule Pluggy.Router do
   get("/teacher/game/index", do: FruitController.teacher_game_index(conn))
   get("/teacher/game/correct", do: FruitController.teacher_game_correct(conn))
   get("/teacher/game/wrong", do: FruitController.teacher_game_wrong(conn))
-  get("/login", do: FruitController.login(conn))
+  get("/login", do: SchoolController.login(conn))
 
 
 
@@ -52,7 +52,7 @@ defmodule Pluggy.Router do
   # should be delete /fruits/:id, but put/patch/delete are not supported without hidden inputs
   post("/fruits/:id/destroy", do: FruitController.destroy(conn, id))
 
-  post("/users/login", do: UserController.login(conn, conn.body_params))
+  post("/login", do: UserController.login(conn, conn.body_params))
   post("/users/logout", do: UserController.logout(conn))
 
   match _ do
