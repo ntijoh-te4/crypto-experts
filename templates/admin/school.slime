@@ -8,18 +8,21 @@ header
 h1 class="title" = school.name
 h2 class="title" Groups
 // GÖR DYNAMISK
-a href="stor_ph"
-    div class="div_block"
-        h2 = "class_name"
-        div class="div_links"
-            a href="placeholder" Edit
-            a href="placeholder" Remove
+div class="box"
+    = for class <- classes do
+        a href="stor_ph"
+        div class="div_block"
+            h2 = class.name
+            div class="div_links"
+                a href="/admin/class/#{class.id}" Edit
+                a href="placeholder" Remove
 
 h2 class="title" Teachers
-a href="stor_ph"
-    div class="div_block"
-        img src="teacher_img"
-        h2 = "teacher_name"
-        div class="div_links"
-            a href="placeholder" Edit
-            a href="placeholder" Remove
+div class="box"
+    a href="stor_ph"
+        div class="div_block"
+            img src="teacher_img"
+            h2 = "teacher_name"
+            div class="div_links"
+                a href="placeholder" Edit
+                a href="placeholder" Remove

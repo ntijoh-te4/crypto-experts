@@ -30,7 +30,7 @@ defmodule Pluggy.Router do
 
   get("/admin/index", do: SchoolController.index(conn))
   get("/admin/school/:id", do: SchoolController.school(conn, id))
-  get("/admin/class", do: SchoolController.school_class(conn))
+  get("/admin/class/:id", do: SchoolController.school_class(conn, id))
   get("/teacher/index", do: SchoolController.teacher_index(conn))
   get("/teacher/class", do: SchoolController.teacher_class(conn))
   get("/teacher/game/index", do: SchoolController.teacher_game_index(conn))
