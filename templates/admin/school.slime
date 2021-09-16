@@ -5,7 +5,7 @@ header
     / Länka till logga ut funktion
     a href="default.asp" LOG OUT 
 
-h1 class="title" School_name
+h1 class="title" = school.name
 h2 class="title" Groups
 // GÖR DYNAMISK
 a href="stor_ph"
@@ -23,4 +23,7 @@ a href="stor_ph"
         div class="div_links"
             a href="placeholder" Edit
             a href="placeholder" Remove
+<<<<<<< HEAD
 
+=======
+>>>>>>> d07491b2bbad2def0fe209da42936e645abe276b

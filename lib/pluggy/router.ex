@@ -28,29 +28,31 @@ defmodule Pluggy.Router do
 
   #get("/users/login", do: send_resp(conn, 200, srender("login")))
 
-  get("/admin/index", do: FruitController.index(conn))
-  get("/admin/school", do: SchoolController.school(conn))
-  get("/admin/class", do: FruitController.school_class(conn))
-  get("/teacher/index", do: FruitController.teacher_index(conn))
-  get("/teacher/class", do: FruitController.teacher_class(conn))
-  get("/teacher/game/index", do: FruitController.teacher_game_index(conn))
-  get("/teacher/game/correct", do: FruitController.teacher_game_correct(conn))
-  get("/teacher/game/wrong", do: FruitController.teacher_game_wrong(conn))
-  get("/login", do: SchoolController.login(conn))
+
+  get("/admin/index", do: SchoolController.index(conn))
+  get("/admin/school/:id", do: SchoolController.school(conn, id))
+  get("/admin/class", do: SchoolController.school_class(conn))
+  get("/teacher/index", do: SchoolController.teacher_index(conn))
+  get("/teacher/class", do: SchoolController.teacher_class(conn))
+  get("/teacher/game/index", do: SchoolController.teacher_game_index(conn))
+  get("/teacher/game/correct", do: SchoolController.teacher_game_correct(conn))
+  get("/teacher/game/wrong", do: SchoolController.teacher_game_wrong(conn))
+  get("/login", do: FruitController.login(conn))
 
 
 
-  get("/fruits/new", do: FruitController.new(conn))
-  get("/fruits/:id", do: FruitController.show(conn, id))
-  get("/fruits/:id/edit", do: FruitController.edit(conn, id))
 
-  post("/fruits", do: FruitController.create(conn, conn.body_params))
+  # get("/fruits/new", do: FruitController.new(conn))
+  # get("/fruits/:id", do: FruitController.show(conn, id))
+  # get("/fruits/:id/edit", do: FruitController.edit(conn, id))
 
-  # should be put /fruits/:id, but put/patch/delete are not supported without hidden inputs
-  post("/fruits/:id/edit", do: FruitController.update(conn, id, conn.body_params))
+  # post("/fruits", do: FruitController.create(conn, conn.body_params))
 
-  # should be delete /fruits/:id, but put/patch/delete are not supported without hidden inputs
-  post("/fruits/:id/destroy", do: FruitController.destroy(conn, id))
+  # # should be put /fruits/:id, but put/patch/delete are not supported without hidden inputs
+  # post("/fruits/:id/edit", do: FruitController.update(conn, id, conn.body_params))
+
+  # # should be delete /fruits/:id, but put/patch/delete are not supported without hidden inputs
+  # post("/fruits/:id/destroy", do: FruitController.destroy(conn, id))
 
   post("/login", do: UserController.login(conn, conn.body_params))
   post("/users/logout", do: UserController.logout(conn))
