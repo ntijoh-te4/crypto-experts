@@ -11,7 +11,13 @@ defmodule Pluggy.School do
   end
 
   def get(id) do
-    Postgrex.query!(DB, "SELECT * FROM schools WHERE id = $1 LIMIT 1", [String.to_integer(id)],
+    Postgrex.query!(DB, "SELECT * FROM schools WHERE id = $1 LIMIT 1", [if !is_integer(id) do String.to_integer(id) else id end],
+      pool: DBConnection.ConnectionPool
+    ).rows
+    |> to_struct
+  end
+  def get_school_from_class(class_id) do
+    Postgrex.query!(DB, "SELECT * FROM schools WHERE id = $1 LIMIT 1", [String.to_integer(class_id)],
       pool: DBConnection.ConnectionPool
     ).rows
     |> to_struct

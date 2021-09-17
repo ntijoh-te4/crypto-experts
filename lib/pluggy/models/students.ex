@@ -1,7 +1,7 @@
-defmodule Pluggy.Class do
-  defstruct(id: nil, name: "", school_id: nil)
+defmodule Pluggy.Students do
+  defstruct(id: nil, name: "", class_id: nil)
 
-  alias Pluggy.Class
+  alias Pluggy.Students
 
   #FIXA VÅR SKIT
 
@@ -10,8 +10,8 @@ defmodule Pluggy.Class do
     |> to_struct_list
   end
 
-  def all_school_classes(id) do
-    Postgrex.query!(DB, "SELECT * FROM classes WHERE school_id = $1", [String.to_integer(id)], pool: DBConnection.ConnectionPool).rows
+  def students_from_class(class_id) do
+    Postgrex.query!(DB, "SELECT * FROM students WHERE class_id = $1", [String.to_integer(class_id)], pool: DBConnection.ConnectionPool).rows
     |> to_struct_list
   end
 
@@ -21,19 +21,6 @@ defmodule Pluggy.Class do
     ).rows
     |> to_struct
   end
-  def get_class_name(class_id) do
-    Postgrex.query!(DB, "SELECT * FROM classes WHERE id = $1 LIMIT 1", [String.to_integer(class_id)],
-      pool: DBConnection.ConnectionPool
-    ).rows
-    |> to_struct
-  end
-  def get_school_from_class(class_id) do
-    Postgrex.query!(DB, "SELECT * FROM classes WHERE id = $1 LIMIT 1", [String.to_integer(class_id)],
-      pool: DBConnection.ConnectionPool
-    ).rows
-    |> to_struct
-  end
-
 
   # def update(id, params) do
   #   name = params["name"]
@@ -63,11 +50,11 @@ defmodule Pluggy.Class do
   #   )
   # end
 
-  def to_struct([[id, name, school_id]]) do
-    %Class{id: id, name: name, school_id: school_id}
+  def to_struct([[id, name, class_id]]) do
+    %Students{id: id, name: name, class_id: class_id}
   end
 
   def to_struct_list(rows) do
-    for [id, name, school_id] <- rows, do:  %Class{id: id, name: name, school_id: school_id}
+    for [id, name, class_id] <- rows, do:  %Students{id: id, name: name, class_id: class_id}
   end
 end

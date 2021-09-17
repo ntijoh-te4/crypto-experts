@@ -12,10 +12,10 @@ h1 class="title" Schools
 // GÖR DYNAMISK
 
 div class="box"
-    = for thing <- schools do
+    = for school <- schools do
         a href="stor_ph"
         div class="div_block"
-            h2 = thing.name
+            h2 = school.name
             div class="div_links"
-                a href="/admin/school/#{thing.id}" Edit
+                a href="/admin/school/#{school.id}" Edit
                 a href="placeholder" Remove
