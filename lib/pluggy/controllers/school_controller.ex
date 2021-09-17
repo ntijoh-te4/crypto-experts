@@ -68,6 +68,8 @@ defmodule Pluggy.SchoolController do
           _ -> User.get(session_user)
         end
 
+
+        # tack till Linus Sjunnesson, 2021-09-17. Jävligt snygg lösning! <3
         school = School.get(Class.get(class_id_maybe).school_id)
         classes = Class.get_class_name(class_id_maybe)
         students = Students.students_from_class(class_id_maybe)
