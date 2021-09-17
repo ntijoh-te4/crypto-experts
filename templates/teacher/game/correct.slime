@@ -1,7 +1,7 @@
 header
     h1 = "WHAT'S THEIR FACE"
     /Gör dynamisk v
-    h2 = "John Doe" 
+    h2 = user.username 
     / Länka till logga ut funktion
     div class="log_out"
         form action="/logout" method="post"

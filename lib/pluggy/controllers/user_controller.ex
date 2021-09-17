@@ -26,13 +26,13 @@ defmodule Pluggy.UserController do
     user = User.get_user(username)
 
     #fixa felmeddelanden
-    if user.id do
+    if user.user_id do
       if password == user.pwd do
-        if user.id == 1 do
-          Plug.Conn.put_session(conn, :user_id, user.id)
+        if user.user_id == 1 do
+          Plug.Conn.put_session(conn, :user_id, user.user_id)
           |> redirect("/admin/index") #skicka vidare modifierad conn
         else
-          Plug.Conn.put_session(conn, :user_id, user.id)
+          Plug.Conn.put_session(conn, :user_id, user.user_id)
           |> redirect("/teacher/index") #skicka vidare modifierad conn
         end
       else

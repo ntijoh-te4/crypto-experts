@@ -11,7 +11,7 @@ defmodule Pluggy.SchoolController do
 
   def school(conn, id) do
     # get user if logged in
-    session_user = conn.private.plug_session["id"]
+    session_user = conn.private.plug_session["user_id"]
 
     current_user =
       case session_user do
@@ -26,7 +26,7 @@ defmodule Pluggy.SchoolController do
   end
 
   def index(conn) do
-    session_user = conn.private.plug_session["id"]
+    session_user = conn.private.plug_session["user_id"]
 
     current_user =
       case session_user do
@@ -61,6 +61,7 @@ defmodule Pluggy.SchoolController do
       # get user if logged in
       session_user = conn.private.plug_session["user_id"]
 
+
       current_user =
         case session_user do
           nil -> nil
@@ -73,7 +74,7 @@ defmodule Pluggy.SchoolController do
     #????
     def teacher_index(conn) do
       # get user if logged in
-      session_user = conn.private.plug_session["id"]
+      session_user = conn.private.plug_session["user_id"]
 
       current_user =
         case session_user do
@@ -86,7 +87,7 @@ defmodule Pluggy.SchoolController do
     end
     def teacher_class(conn) do
       # get user if logged in
-      session_user = conn.private.plug_session["id"]
+      session_user = conn.private.plug_session["user_id"]
 
       current_user =
         case session_user do
@@ -99,7 +100,7 @@ defmodule Pluggy.SchoolController do
     end
     def teacher_game_index(conn) do
       # get user if logged in
-      session_user = conn.private.plug_session["id"]
+      session_user = conn.private.plug_session["user_id"]
 
       current_user =
         case session_user do
@@ -125,7 +126,7 @@ defmodule Pluggy.SchoolController do
     end
     def teacher_game_wrong(conn) do
       # get user if logged in
-      session_user = conn.private.plug_session["id"]
+      session_user = conn.private.plug_session["user_id"]
 
       current_user =
         case session_user do

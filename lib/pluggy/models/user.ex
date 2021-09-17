@@ -1,5 +1,5 @@
 defmodule Pluggy.User do
-  defstruct(id: nil, username: "", pwd: "")
+  defstruct(user_id: nil, username: "", pwd: "")
 
   alias Pluggy.User
 
@@ -18,11 +18,11 @@ defmodule Pluggy.User do
   end
 
   def to_struct([]) do
-    %User{id: nil, username: "", pwd: ""}
+    %User{user_id: nil, username: "", pwd: ""}
   end
 
   def to_struct([[id, username, pwd]]) do
-    %User{id: id, username: username, pwd: pwd}
+    %User{user_id: id, username: username, pwd: pwd}
   end
 
 
