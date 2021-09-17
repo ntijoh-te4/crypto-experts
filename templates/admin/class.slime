@@ -7,13 +7,15 @@ header
         form action="/logout" method="post"
             button type="submit" Log out
 
-h1 class="title" School_name
-h2 class="title" class_name
+h1 class="title" = school.name
+h2 class="title" = classes.name
 // GÖR DYNAMISK
-a href="stor_ph"
-    div class="div_block"
-        img src="teacher_img"
-        h2 = "student_name"
-        div class="div_links"
-            a href="placeholder" Edit
-            a href="placeholder" Remove
+div class="box"
+    = for student <- students do
+        a href="stor_ph"
+            div class="div_block"
+                img src="student_img"
+                h2 = student.name
+                div class="div_links"
+                    a href="placeholder" Edit
+                    a href="placeholder" Remove
