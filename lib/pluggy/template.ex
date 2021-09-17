@@ -12,6 +12,7 @@ defmodule Pluggy.Template do
     end
   end
 
+
   # def render(file, data \\ [], layout \\ true) do
   #   case layout do
   #     true ->

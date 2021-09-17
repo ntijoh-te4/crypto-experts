@@ -37,7 +37,7 @@ defmodule Pluggy.Router do
   get("/teacher/game/correct", do: SchoolController.teacher_game_correct(conn))
   get("/teacher/game/wrong", do: SchoolController.teacher_game_wrong(conn))
   get("/login", do: UserController.login(conn))
-
+  get("/error", do: UserController.error(conn))
 
 
 

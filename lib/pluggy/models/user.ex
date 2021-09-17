@@ -17,7 +17,9 @@ defmodule Pluggy.User do
     |> to_struct
   end
 
-
+  def to_struct([]) do
+    %User{id: nil, username: "", pwd: ""}
+  end
 
   def to_struct([[id, username, pwd]]) do
     %User{id: id, username: username, pwd: pwd}

@@ -36,10 +36,10 @@ defmodule Pluggy.UserController do
           |> redirect("/teacher/index") #skicka vidare modifierad conn
         end
       else
-        redirect(conn, "/login")
+        redirect(conn, "/error")
       end
     else
-      redirect(conn, "/login")
+      redirect(conn, "/error")
     end
 
 
@@ -50,6 +50,20 @@ defmodule Pluggy.UserController do
     |> redirect("/login")
   end
 
+
+  def error(conn) do
+    # get user if logged in
+    session_user = conn.private.plug_session["user_id"]
+
+    current_user =
+      case session_user do
+        nil -> nil
+        _ -> User.get(session_user)
+      end
+
+    #srender använder slime
+    send_resp(conn, 200, srender("error", user: current_user))
+  end
   # def create(conn, params) do
   # 	#pseudocode
   # 	# in db table users with password_hash CHAR(60)
