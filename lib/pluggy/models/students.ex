@@ -1,5 +1,5 @@
 defmodule Pluggy.Students do
-  defstruct(id: nil, name: "", class_id: nil)
+  defstruct(id: nil, name: "", class_id: nil, url: "")
 
   alias Pluggy.Students
 
@@ -55,6 +55,6 @@ defmodule Pluggy.Students do
   end
 
   def to_struct_list(rows) do
-    for [id, name, class_id] <- rows, do:  %Students{id: id, name: name, class_id: class_id}
+    for [id, name, class_id, url] <- rows, do:  %Students{id: id, name: name, class_id: class_id, url: url}
   end
 end
