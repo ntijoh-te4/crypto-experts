@@ -8,11 +8,13 @@ header
             button type="submit" Log out
 
 //Gör så många som läraren har skolor
-h1 class="title" School_name
+
 // GÖR DYNAMISK
-a href="stor_ph"
-    div class="div_block"
-        h2 = "class_name"
-        div class="div_links"
-            a href="placeholder" Show
-            a href="placeholder" Practice
+= for school <- schools do
+    h1 class="title" = school.name
+    a href="stor_ph"
+        div class="div_block"
+            h2 = "class_name"
+            div class="div_links"
+                a href="placeholder" Show
+                a href="placeholder" Practice

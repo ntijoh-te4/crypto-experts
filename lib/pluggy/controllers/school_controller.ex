@@ -5,6 +5,7 @@ defmodule Pluggy.SchoolController do
   alias Pluggy.User
   alias Pluggy.Class
   alias Pluggy.Students
+  alias Pluggy.Teacher
 
   import Pluggy.Template, only: [srender: 2]
   import Plug.Conn, only: [send_resp: 3]
@@ -80,7 +81,6 @@ defmodule Pluggy.SchoolController do
     end
     #????
     def teacher_index(conn) do
-      # get user if logged in
       session_user = conn.private.plug_session["user_id"]
 
       current_user =
@@ -89,9 +89,9 @@ defmodule Pluggy.SchoolController do
           _ -> User.get(session_user)
         end
 
-      #srender använder slime
-      send_resp(conn, 200, srender("teacher/index", schools: School.all(), user: current_user))
+     send_resp(conn, 200, srender("teacher/index", schools: School.all(), user: current_user))
     end
+
     def teacher_class(conn) do
       # get user if logged in
       session_user = conn.private.plug_session["user_id"]
