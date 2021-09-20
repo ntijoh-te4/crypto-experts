@@ -23,6 +23,10 @@ defmodule Pluggy.SchoolController do
       school = School.get(school_id)
       classes = Class.all_school_classes(school_id)
 
+      if session_user != 1 do
+        send_resp(conn, 200, srender("login", user: current_user))
+    end
+
     #srender använder slime
     send_resp(conn, 200, srender("admin/school", school: school, classes: classes, user: current_user))
   end
@@ -35,6 +39,10 @@ defmodule Pluggy.SchoolController do
         nil -> nil
         _ -> User.get(session_user)
       end
+
+      if session_user != 1 do
+        send_resp(conn, 200, srender("login", user: current_user))
+    end
 
    send_resp(conn, 200, srender("admin/index", schools: School.all(), user: current_user))
   end
@@ -75,6 +83,10 @@ defmodule Pluggy.SchoolController do
         school = School.get(Class.get(class_id_maybe).school_id)
         classes = Class.get_class_name(class_id_maybe)
         students = Students.students_from_class(class_id_maybe)
+
+        if session_user != 1 do
+          send_resp(conn, 200, srender("login", user: current_user))
+      end
 
       #srender använder slime
       send_resp(conn, 200, srender("admin/class", school: school, classes: classes, students: students, user: current_user))
