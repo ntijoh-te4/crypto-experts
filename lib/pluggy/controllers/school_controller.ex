@@ -6,6 +6,7 @@ defmodule Pluggy.SchoolController do
   alias Pluggy.Class
   alias Pluggy.Students
   alias Pluggy.Teacher
+  alias Pluggy.Game
 
   import Pluggy.Template, only: [srender: 2]
   import Plug.Conn, only: [send_resp: 3]
@@ -127,8 +128,11 @@ defmodule Pluggy.SchoolController do
           _ -> User.get(session_user)
         end
 
+        students = Game.get_student_from_class(2)
+
+
       #srender använder slime
-      send_resp(conn, 200, srender("teacher/game/index", schools: School.all(), user: current_user))
+      send_resp(conn, 200, srender("teacher/game/index", students: students, user: current_user))
     end
     def teacher_game_correct(conn) do
       # get user if logged in

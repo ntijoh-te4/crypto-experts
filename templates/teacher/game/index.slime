@@ -9,12 +9,13 @@ header
 
 div class="game"
     h1 class="title" school_class (School_name)
+
     div
-        img src="student_img"
-        li class="alternatives"
-            a href="wrong" student_name
-            a href="wrong" student_name
-            a href="wrong" student_name
-            a href="wrong" student_name
-            a href="correct" student_name
+        = for student <- students do
+            = if student.w_c == "correct" do
+                img src="/img/#{student.url}"
+
+        = for student <- students do        
+            li class="alternatives"    
+                a href="#{student.w_c}" = student.name
     p class="title" = "x out of x correct"

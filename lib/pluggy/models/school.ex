@@ -23,6 +23,7 @@ defmodule Pluggy.School do
     |> to_struct
   end
 
+
   # def update(id, params) do
   #   name = params["name"]
   #   tastiness = String.to_integer(params["tastiness"])
