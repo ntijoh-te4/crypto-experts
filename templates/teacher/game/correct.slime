@@ -7,10 +7,11 @@ header
         form action="/logout" method="post"
             button type="submit" Log out
 
-div class="error"
-    div class="answerpage"
-        a style="background-color:green;" CORRECT
-        a href="/teacher/game/index/#{class_id}" next
-        /a style="background-color:green;" correct_student_name
-        /img src="student_img"
-    /p class="title" = "x out of x correct"
+div class="game"
+    h1 class="title" = class.name
+    div
+        img src="student_img"
+        li class="alternatives"
+            a style="background-color:green;" CORRECT
+            a style="background-color:green;" correct_student_name
+            a href="/teacher/game/index/#{class_id}" next
