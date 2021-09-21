@@ -1,5 +1,5 @@
 body {
-	background-color: white;
+	background-color: #c66cce;
 	font-family: 'Segoe UI', sans-serif;
 	margin: 0;
 }
@@ -37,7 +37,7 @@ header h2{
 	margin-top: auto;
 	background-color: white;
 	padding: 20px;
-	color: #692b6f;
+	color: #c66cce;
 	width: 12%;
 	height: 20%;
 	font-size: 20px;
@@ -103,15 +103,25 @@ header h2{
 	display: flex;
 	width: 40%;
 }
+
+.box a{
+	width: 0;
+}
+
 .div_block{
 	border-style: solid;
 	border-radius: 5%;
-	border-color: white;
+	border-color: #692b6f;
 	width: 30%;
 	margin-bottom: 4%;
 	margin-right: 2%;
 	margin-left: 2%;
 	text-align: center;
+	background: white;
+}
+
+.div_block a{
+	color: #c66cce;
 }
 
 .div_links{
