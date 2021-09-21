@@ -13,7 +13,6 @@ h1 class="title" Schools
 
 div class="box"
     = for school <- schools do
-        a href="stor_ph"
         div class="div_block"
             h2 = school.name
             div class="div_links"

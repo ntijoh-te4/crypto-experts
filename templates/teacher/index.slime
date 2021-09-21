@@ -1,19 +1,16 @@
 header
     h1 = "WHAT'S THEIR FACE"
-    /Gör dynamisk v
     h2 = user.username  
-    / Länka till logga ut funktion
     div class="log_out"
         form action="/logout" method="post"
             button type="submit" Log out
-
-//Gör så många som läraren har skolor
-
-// GÖR DYNAMISK
+            
 = for school <- schools do
     h1 class="title" = school.name
-    = if classes == [] do    
-            h3 class="title" = "There are no classes"
+    //filtrera så den bara har kvar klasserna för den skolan
+    //- this_schools_classes = Enum.filter(classes )
+    //= if this_schools_classes == [] do    
+           // h3 class="title" = "There are no classes"
     div class="box"
         = for class <- classes do
             = if school.school_id == class.school_id do
