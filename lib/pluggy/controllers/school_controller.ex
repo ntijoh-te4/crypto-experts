@@ -155,10 +155,9 @@ defmodule Pluggy.SchoolController do
     defp redirect(conn, url) do
       Plug.Conn.put_resp_header(conn, "location", url) |> send_resp(303, "")
     end
-end
 
 
-
+#DEletar inte bra för db
 def delete_school(conn, school_id) do
   session_user = conn.private.plug_session["user_id"]
 
@@ -171,4 +170,11 @@ def delete_school(conn, school_id) do
 
       if session_user != 1 do
         send_resp(conn, 200, srender("login", user: current_user))
+
     end
+
+    School.delete(school_id)
+
+    send_resp(conn, 200, srender("admin/index", schools: School.all(), user: current_user))
+  end
+end
