@@ -63,14 +63,7 @@ defmodule Pluggy.UserController do
 
     #srender använder slime
     send_resp(conn, 200, srender("error", user: current_user))
-  end
-  # def create(conn, params) do
-  # 	#pseudocode
-  # 	# in db table users with password_hash CHAR(60)
-  # 	# hashed_password = Bcrypt.hash_pwd_salt(params["password"])
-  #  	# Postgrex.query!(DB, "INSERT INTO users (username, password_hash) VALUES ($1, $2)", [params["username"], hashed_password], [pool: DBConnection.ConnectionPool])
-  #  	# redirect(conn, "/fruits")
-  # end
+end
 
   defp redirect(conn, url),
     do: Plug.Conn.put_resp_header(conn, "location", url) |> send_resp(303, "")

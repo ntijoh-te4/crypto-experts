@@ -32,7 +32,7 @@ defmodule Pluggy.Router do
   get("/admin/school/:school_id", do: SchoolController.school(conn, school_id))
   get("/admin/class/:class_id_maybe", do: SchoolController.school_class(conn, class_id_maybe))
   get("/teacher/index", do: SchoolController.teacher_index(conn))
-  get("/teacher/class", do: SchoolController.teacher_class(conn))
+  get("/teacher/class/:class_id", do: SchoolController.teacher_class(conn, class_id))
   get("/teacher/game/index", do: SchoolController.teacher_game_index(conn))
   get("/teacher/game/correct", do: SchoolController.teacher_game_correct(conn))
   get("/teacher/game/wrong", do: SchoolController.teacher_game_wrong(conn))
