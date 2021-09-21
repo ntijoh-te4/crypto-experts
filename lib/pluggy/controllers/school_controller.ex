@@ -23,13 +23,17 @@ defmodule Pluggy.SchoolController do
       end
       school = School.get(school_id)
       classes = Class.all_school_classes(school_id)
+      teachers = Teacher.get_teachers_id_for_school(school_id)
+      # Enum.map(teachers, fn x -> Teacher.get_teachers(x.id).name end)
+
+      # teachers = Teacher.get_teachers(teachers_id.teacher_id)
 
       if session_user != 1 do
         send_resp(conn, 200, srender("login", user: current_user))
     end
 
     #srender använder slime
-    send_resp(conn, 200, srender("admin/school", school: school, classes: classes, user: current_user))
+    send_resp(conn, 200, srender("admin/school", school: school, teachers: teachers, classes: classes, user: current_user))
   end
 
   def index(conn) do
@@ -47,27 +51,7 @@ defmodule Pluggy.SchoolController do
 
    send_resp(conn, 200, srender("admin/index", schools: School.all(), user: current_user))
   end
-  # def index(conn) do
-  #   # get user if logged in
-  #   session_user = conn.private.plug_session["user_id"]
 
-  #   current_user =
-  #     case session_user do
-  #       nil -> nil
-  #       _ -> User.get(session_user)
-  #     end
-  #   #srender använder slime
-  #   send_resp(conn, 200, srender("admin/index", fruits: Fruit.all(), user: current_user))
-  # end
-
-
-
-    # TA BORT GÖR OM????
-
-    #fixa?????
-
-
-    #??????????
     def school_class(conn, class_id_maybe) do
       # get user if logged in
       session_user = conn.private.plug_session["user_id"]
@@ -102,10 +86,16 @@ defmodule Pluggy.SchoolController do
           _ -> User.get(session_user)
         end
 
-     send_resp(conn, 200, srender("teacher/index", schools: School.all(), user: current_user))
+        schools = School.all()
+        classes = School.schools_and_classes()
+
+
+
+     send_resp(conn, 200, srender("teacher/index", schools: schools, classes: classes, user: current_user))
     end
 
-    def teacher_class(conn) do
+    @spec teacher_class(any, any) :: none
+    def teacher_class(conn, class_id) do
       # get user if logged in
       session_user = conn.private.plug_session["user_id"]
 
@@ -115,8 +105,11 @@ defmodule Pluggy.SchoolController do
           _ -> User.get(session_user)
         end
 
+      school = School.get_school_from_class(class_id)
+      class = Class.get_class_name(class_id)
+
       #srender använder slime
-      send_resp(conn, 200, srender("teacher/class", schools: School.all(), user: current_user))
+      send_resp(conn, 200, srender("teacher/class", school: school, class: class, user: current_user))
     end
     def teacher_game_index(conn) do
       # get user if logged in
@@ -129,7 +122,6 @@ defmodule Pluggy.SchoolController do
         end
 
         students = Game.get_student_from_class(2)
-
 
       #srender använder slime
       send_resp(conn, 200, srender("teacher/game/index", students: students, user: current_user))
@@ -164,3 +156,19 @@ defmodule Pluggy.SchoolController do
       Plug.Conn.put_resp_header(conn, "location", url) |> send_resp(303, "")
     end
 end
+
+
+
+def delete_school(conn, school_id) do
+  session_user = conn.private.plug_session["user_id"]
+
+    current_user =
+      case session_user do
+        nil -> nil
+        _ -> User.get(session_user)
+      end
+
+
+      if session_user != 1 do
+        send_resp(conn, 200, srender("login", user: current_user))
+    end

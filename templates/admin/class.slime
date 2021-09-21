@@ -17,5 +17,4 @@ div class="box"
                 img src="/img/#{student.url}"
                 h2 = student.name
                 div class="div_links"
-                    a href="placeholder" Edit
                     a href="placeholder" Remove

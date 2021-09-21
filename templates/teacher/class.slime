@@ -7,8 +7,8 @@ header
         form action="/logout" method="post"
             button type="submit" Log out 
 
-h1 class="title" School_name
-h2 class="title" class_name
+h1 class="title" = school.name
+h2 class="title" = class.name
 // GÖR DYNAMISK
 a href="stor_ph"
     div class="div_block"
