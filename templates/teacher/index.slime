@@ -17,4 +17,5 @@ header
             h2 = "class_name"
             div class="div_links"
                 a href="placeholder" Show
-                a href="placeholder" Practice
+                a href="/teacher/game/index" Practice
+// index/:class_id

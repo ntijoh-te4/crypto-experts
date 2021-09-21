@@ -6,16 +6,18 @@ header
     div class="log_out"
         form action="/logout" method="post"
             button type="submit" Log out 
+h1 class="title" school_class (School_name)
 
 div class="game"
-    h1 class="title" school_class (School_name)
-
-    div
+    
+    div class="img_correct"
         = for student <- students do
             = if student.w_c == "correct" do
-                img src="/img/#{student.url}"
-
+                img class="game_img" src="/img/#{student.url}"
+    div class="game_options"
         = for student <- students do        
             li class="alternatives"    
                 a href="#{student.w_c}" = student.name
     p class="title" = "x out of x correct"
+
+    

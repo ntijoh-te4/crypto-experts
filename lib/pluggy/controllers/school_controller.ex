@@ -130,7 +130,6 @@ defmodule Pluggy.SchoolController do
 
         students = Game.get_student_from_class(2)
 
-
       #srender använder slime
       send_resp(conn, 200, srender("teacher/game/index", students: students, user: current_user))
     end
