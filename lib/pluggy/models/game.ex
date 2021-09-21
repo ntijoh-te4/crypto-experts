@@ -4,8 +4,8 @@ defmodule Pluggy.Game do
   alias Pluggy.Game
 
 
-  def get_student_from_class(2) do
-    Postgrex.query!(DB, "SELECT * FROM students WHERE class_id = $1", [2], pool: DBConnection.ConnectionPool).rows
+  def get_student_from_class(class_id) do
+    Postgrex.query!(DB, "SELECT * FROM students WHERE class_id = $1", [String.to_integer(class_id)], pool: DBConnection.ConnectionPool).rows
     |> Enum.map(fn x -> Enum.concat(x, ["wrong"]) end)
     |> Enum.shuffle
     |> correct

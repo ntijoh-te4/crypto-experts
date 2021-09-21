@@ -33,9 +33,9 @@ defmodule Pluggy.Router do
   get("/admin/class/:class_id_maybe", do: SchoolController.school_class(conn, class_id_maybe))
   get("/teacher/index", do: SchoolController.teacher_index(conn))
   get("/teacher/class/:class_id", do: SchoolController.teacher_class(conn, class_id))
-  get("/teacher/game/index", do: SchoolController.teacher_game_index(conn))
-  get("/teacher/game/correct", do: SchoolController.teacher_game_correct(conn))
-  get("/teacher/game/wrong", do: SchoolController.teacher_game_wrong(conn))
+  get("/teacher/game/index/:class_id", do: SchoolController.teacher_game_index(conn, class_id))
+  get("/teacher/game/index/correct/:class_id", do: SchoolController.teacher_game_correct(conn, class_id))
+  get("/teacher/game/index/wrong/:class_id", do: SchoolController.teacher_game_wrong(conn, class_id))
   get("/login", do: UserController.login(conn))
   get("/error", do: UserController.error(conn))
 

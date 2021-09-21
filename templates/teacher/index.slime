@@ -20,4 +20,4 @@ header
                         h2 = class.name
                         div class="div_links"
                             a href="/teacher/class/#{class.class_id}" Show
-                            a href="placeholder" Practice
+                            a href="/teacher/game/index/#{class.class_id}" Practice

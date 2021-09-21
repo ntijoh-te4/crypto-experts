@@ -111,7 +111,7 @@ defmodule Pluggy.SchoolController do
       #srender använder slime
       send_resp(conn, 200, srender("teacher/class", school: school, class: class, user: current_user))
     end
-    def teacher_game_index(conn) do
+    def teacher_game_index(conn, class_id) do
       # get user if logged in
       session_user = conn.private.plug_session["user_id"]
 
@@ -121,12 +121,12 @@ defmodule Pluggy.SchoolController do
           _ -> User.get(session_user)
         end
 
-        students = Game.get_student_from_class(2)
+        students = Game.get_student_from_class(class_id)
 
       #srender använder slime
-      send_resp(conn, 200, srender("teacher/game/index", students: students, user: current_user))
+      send_resp(conn, 200, srender("teacher/game/index", students: students, user: current_user, class_id: class_id))
     end
-    def teacher_game_correct(conn) do
+    def teacher_game_correct(conn, class_id) do
       # get user if logged in
       session_user = conn.private.plug_session["user_id"]
 
@@ -137,9 +137,9 @@ defmodule Pluggy.SchoolController do
         end
 
       #srender använder slime
-      send_resp(conn, 200, srender("teacher/game/correct", schools: School.all(), user: current_user))
+      send_resp(conn, 200, srender("teacher/game/correct", schools: School.all(), user: current_user, class_id: class_id))
     end
-    def teacher_game_wrong(conn) do
+    def teacher_game_wrong(conn, class_id) do
       # get user if logged in
       session_user = conn.private.plug_session["user_id"]
 
@@ -150,14 +150,14 @@ defmodule Pluggy.SchoolController do
         end
 
       #srender använder slime
-      send_resp(conn, 200, srender("teacher/game/wrong", schools: School.all(), user: current_user))
+      send_resp(conn, 200, srender("teacher/game/wrong", schools: School.all(), user: current_user, class_id: class_id))
     end
     defp redirect(conn, url) do
       Plug.Conn.put_resp_header(conn, "location", url) |> send_resp(303, "")
     end
 
 
-#DEletar inte bra för db
+#DEletar inte bra för db, funkar ej
 def delete_school(conn, school_id) do
   session_user = conn.private.plug_session["user_id"]
 

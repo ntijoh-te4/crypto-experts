@@ -17,7 +17,7 @@ div class="game"
     div class="game_options"
         = for student <- students do        
             li class="alternatives"    
-                a href="#{student.w_c}" = student.name
+                a href="#{student.w_c}/#{class_id}" = student.name
     p class="title" = "x out of x correct"
 
     
