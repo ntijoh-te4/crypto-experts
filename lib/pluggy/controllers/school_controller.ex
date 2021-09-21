@@ -124,9 +124,10 @@ defmodule Pluggy.SchoolController do
         end
 
         students = Game.get_student_from_class(class_id)
+        class = Class.get_class_name(class_id)
 
       #srender använder slime
-      send_resp(conn, 200, srender("teacher/game/index", students: students, user: current_user, class_id: class_id))
+      send_resp(conn, 200, srender("teacher/game/index", students: students, class: class, user: current_user, class_id: class_id))
     end
     def teacher_game_correct(conn, class_id) do
       # get user if logged in
@@ -138,8 +139,10 @@ defmodule Pluggy.SchoolController do
           _ -> User.get(session_user)
         end
 
+        class = Class.get_class_name(class_id)
+
       #srender använder slime
-      send_resp(conn, 200, srender("teacher/game/correct", schools: School.all(), user: current_user, class_id: class_id))
+      send_resp(conn, 200, srender("teacher/game/correct", schools: School.all(), class: class, user: current_user, class_id: class_id))
     end
     def teacher_game_wrong(conn, class_id) do
       # get user if logged in
@@ -151,8 +154,10 @@ defmodule Pluggy.SchoolController do
           _ -> User.get(session_user)
         end
 
+        class = Class.get_class_name(class_id)
+
       #srender använder slime
-      send_resp(conn, 200, srender("teacher/game/wrong", schools: School.all(), user: current_user, class_id: class_id))
+      send_resp(conn, 200, srender("teacher/game/wrong", schools: School.all(), class: class, user: current_user, class_id: class_id))
     end
     defp redirect(conn, url) do
       Plug.Conn.put_resp_header(conn, "location", url) |> send_resp(303, "")

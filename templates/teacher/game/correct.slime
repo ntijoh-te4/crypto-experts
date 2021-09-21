@@ -8,6 +8,7 @@ header
             button type="submit" Log out
 
 div class="game"
+    h1 class="title" = class.name
     div
         img src="student_img"
         li class="alternatives"
