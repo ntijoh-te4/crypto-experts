@@ -15,6 +15,6 @@ div class="box"
         a href="stor_ph"
             div class="div_block"
                 img src="/img/#{student.url}"
-                h2 = student.name
+                h3 = student.name
                 div class="div_links"
                     a href="placeholder" Remove

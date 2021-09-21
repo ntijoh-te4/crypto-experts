@@ -5,4 +5,5 @@ div class="login"
         input type="text" name="username" 
         label for="password" Password 
         input type="password" name="pwd" 
-        button type="submit" Log In
+        div class="login-center"
+            button type="submit" Log In
