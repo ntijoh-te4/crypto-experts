@@ -1,61 +1,43 @@
 defmodule Pluggy.School do
-  defstruct(id: nil, name: "")
+  defstruct(school_id: nil, name: "", class_id: nil)
 
   alias Pluggy.School
 
   #FIXA VÅR SKIT
 
   def all do
-    Postgrex.query!(DB, "SELECT * FROM schools", [], pool: DBConnection.ConnectionPool).rows
+    Enum.map(Postgrex.query!(DB, "SELECT * FROM schools", [], pool: DBConnection.ConnectionPool).rows, fn x -> x ++ [nil] end)
+    |> to_struct_list
+  end
+  def schools_and_classes do
+    Postgrex.query!(DB, "SELECT school_id,classes.name,classes.id FROM classes,schools WHERE school_id = schools.id", [], pool: DBConnection.ConnectionPool).rows
     |> to_struct_list
   end
 
+
   def get(id) do
-    Postgrex.query!(DB, "SELECT * FROM schools WHERE id = $1 LIMIT 1", [if !is_integer(id) do String.to_integer(id) else id end],
-      pool: DBConnection.ConnectionPool
-    ).rows
+    Enum.map(Postgrex.query!(DB, "SELECT id,name FROM schools WHERE id = $1 LIMIT 1", [if !is_integer(id) do String.to_integer(id) else id end], pool: DBConnection.ConnectionPool).rows, fn x -> x ++ [nil] end)
     |> to_struct
   end
   def get_school_from_class(class_id) do
-    Postgrex.query!(DB, "SELECT * FROM schools WHERE id = $1 LIMIT 1", [String.to_integer(class_id)],
-      pool: DBConnection.ConnectionPool
-    ).rows
+    Postgrex.query!(DB, "SELECT school_id,schools.name,classes.id FROM classes JOIN schools ON school_id = schools.id WHERE classes.id = $1", [String.to_integer(class_id)], pool: DBConnection.ConnectionPool).rows
     |> to_struct
   end
 
-  # def update(id, params) do
-  #   name = params["name"]
-  #   tastiness = String.to_integer(params["tastiness"])
-  #   id = String.to_integer(id)
-
-  #   Postgrex.query!(
-  #     DB,
-  #     "UPDATE fruits SET name = $1, tastiness = $2 WHERE id = $3",
-  #     [name, tastiness, id],
-  #     pool: DBConnection.ConnectionPool
-  #   )
-  # end
-
-  # def create(params) do
-  #   name = params["name"]
-  #   tastiness = String.to_integer(params["tastiness"])
-
-  #   Postgrex.query!(DB, "INSERT INTO fruits (name, tastiness) VALUES ($1, $2)", [name, tastiness],
-  #     pool: DBConnection.ConnectionPool
-  #   )
-  # end
-
-  # def delete(id) do
-  #   Postgrex.query!(DB, "DELETE FROM fruits WHERE id = $1", [String.to_integer(id)],
-  #     pool: DBConnection.ConnectionPool
-  #   )
-  # end
-
-  def to_struct([[id, name]]) do
-    %School{id: id, name: name}
+  def to_struct([[school_id, name, class_id]]) do
+    %School{school_id: school_id, name: name, class_id: class_id}
   end
 
   def to_struct_list(rows) do
-    for [id, name] <- rows, do: %School{id: id, name: name}
+    for [school_id, name, class_id] <- rows, do: %School{school_id: school_id, name: name, class_id: class_id}
   end
 end
+
+# id | name  | school_id | id | name
+# ----+-------+-----------+----+------
+#   1 | 18TEA |         1 |  1 | NTI
+#   2 | 18TEB |         1 |  1 | NTI
+#   3 | 18TEC |         1 |  1 | NTI
+#   4 | 19TEA |         2 |  2 | LBS
+#   5 | 19TEB |         2 |  2 | LBS
+#   6 | 19TEC |         2 |  2 | LBS
