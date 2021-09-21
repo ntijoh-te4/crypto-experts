@@ -56,6 +56,9 @@ defmodule Pluggy.Router do
   post("/login", do: UserController.login(conn, conn.body_params))
   post("/logout", do: UserController.logout(conn))
 
+  post("/admin/school/:school_id/delete", do: SchoolController.delete_school(conn, school_id))
+
+
   match _ do
     send_resp(conn, 404, "oops")
   end

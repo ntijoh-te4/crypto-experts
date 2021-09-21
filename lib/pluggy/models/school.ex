@@ -46,11 +46,11 @@ defmodule Pluggy.School do
   #   )
   # end
 
-  # def delete(id) do
-  #   Postgrex.query!(DB, "DELETE FROM fruits WHERE id = $1", [String.to_integer(id)],
-  #     pool: DBConnection.ConnectionPool
-  #   )
-  # end
+  def delete(school_id) do
+    Postgrex.query!(DB, "DELETE FROM schools WHERE id = $1", [String.to_integer(school_id)],
+      pool: DBConnection.ConnectionPool
+    )
+  end
 
   def to_struct([[id, name]]) do
     %School{id: id, name: name}

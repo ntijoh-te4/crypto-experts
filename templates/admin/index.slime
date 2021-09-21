@@ -18,4 +18,4 @@ div class="box"
             h2 = school.name
             div class="div_links"
                 a href="/admin/school/#{school.id}" Show
-                a href="placeholder" Remove
+                a href="/admin/school/#{school.id}/delete" Remove
