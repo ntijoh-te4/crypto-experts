@@ -6,7 +6,7 @@ header
     div class="log_out"
         form action="/logout" method="post"
             button type="submit" Log out 
-h1 class="title" school_class (School_name)
+h1 class="title" = class.name
 
 div class="game"
     

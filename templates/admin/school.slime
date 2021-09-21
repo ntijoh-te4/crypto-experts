@@ -23,7 +23,6 @@ h2 class="title" Teachers
 div class="box"
     = for teacher <- teachers do
             div class="div_block"
-                img src="teacher_img"
                 h2 = teacher.name
                 div class="div_links"
                     a href="placeholder" Remove
