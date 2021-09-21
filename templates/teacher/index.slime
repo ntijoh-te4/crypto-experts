@@ -12,6 +12,8 @@ header
 // GÖR DYNAMISK
 = for school <- schools do
     h1 class="title" = school.name
+    = if classes == [] do    
+            h3 class="title" = "There are no classes"
     div class="box"
         = for class <- classes do
             = if school.school_id == class.school_id do

@@ -8,7 +8,9 @@ header
             button type="submit" Log out
 
 h1 class="title" = school.name
-h2 class="title" Groups
+h2 class="title" Classes
+= if classes == [] do    
+    h3 class="title" = "There are no classes"
 // GÖR DYNAMISK
 div class="box"
     = for class <- classes do
