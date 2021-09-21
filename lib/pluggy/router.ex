@@ -56,7 +56,7 @@ defmodule Pluggy.Router do
   post("/login", do: UserController.login(conn, conn.body_params))
   post("/logout", do: UserController.logout(conn))
 
-  post("/admin/index/:school_id/delete", do: SchoolController.delete_school(conn, school_id))
+  post("/admin/index/delete/:school_id", do: SchoolController.delete_school(conn, school_id))
 
 
   match _ do
