@@ -10,8 +10,9 @@ defmodule Pluggy.Students do
     |> to_struct_list
   end
 
-  def students_from_class(class_id) do
-    Postgrex.query!(DB, "SELECT * FROM students WHERE class_id = $1", [String.to_integer(class_id)], pool: DBConnection.ConnectionPool).rows
+  @spec get_students_from_class(any) :: none
+  def get_students_from_class(class_id) do
+    Postgrex.query!(DB, "SELECT id,name,class_id,url FROM students WHERE class_id = $1", [String.to_integer(class_id)], pool: DBConnection.ConnectionPool).rows
     |> to_struct_list
   end
 

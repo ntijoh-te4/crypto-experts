@@ -8,11 +8,12 @@ header
             button type="submit" Log out
 
 h1 class="title" = school.name
-h2 class="title" Groups
+h2 class="title" Classes
+= if classes == [] do    
+    h3 class="title" = "There are no classes"
 // GÖR DYNAMISK
 div class="box"
     = for class <- classes do
-        a href="stor_ph"
         div class="div_block"
             h2 = class.name
             div class="div_links"
@@ -21,7 +22,6 @@ div class="box"
 h2 class="title" Teachers
 div class="box"
     = for teacher <- teachers do
-        a href="stor_ph"
             div class="div_block"
                 img src="teacher_img"
                 h2 = teacher.name

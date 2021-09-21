@@ -24,6 +24,7 @@ defmodule Pluggy.SchoolController do
       school = School.get(school_id)
       classes = Class.all_school_classes(school_id)
       teachers = Teacher.get_teachers_id_for_school(school_id)
+
       # Enum.map(teachers, fn x -> Teacher.get_teachers(x.id).name end)
 
       # teachers = Teacher.get_teachers(teachers_id.teacher_id)
@@ -67,7 +68,7 @@ defmodule Pluggy.SchoolController do
         # tack till Linus Sjunnesson, 2021-09-17. Jävligt snygg lösning! <3
         school = School.get(Class.get(class_id_maybe).school_id)
         classes = Class.get_class_name(class_id_maybe)
-        students = Students.students_from_class(class_id_maybe)
+        students = Students.get_students_from_class(class_id_maybe)
 
         if session_user != 1 do
           send_resp(conn, 200, srender("login", user: current_user))
@@ -107,9 +108,10 @@ defmodule Pluggy.SchoolController do
 
       school = School.get_school_from_class(class_id)
       class = Class.get_class_name(class_id)
+      students = Students.get_students_from_class(class_id)
 
       #srender använder slime
-      send_resp(conn, 200, srender("teacher/class", school: school, class: class, user: current_user))
+      send_resp(conn, 200, srender("teacher/class", school: school, class: class, students: students, user: current_user))
     end
     def teacher_game_index(conn, class_id) do
       # get user if logged in
@@ -157,9 +159,11 @@ defmodule Pluggy.SchoolController do
     end
 
 
+
 #DEletar inte bra för db, funkar ej
 def delete_school(conn, school_id) do
   session_user = conn.private.plug_session["user_id"]
+
 
     current_user =
       case session_user do
@@ -167,11 +171,9 @@ def delete_school(conn, school_id) do
         _ -> User.get(session_user)
       end
 
-
-      if session_user != 1 do
+    if session_user != 1 do
         send_resp(conn, 200, srender("login", user: current_user))
-
-    end
+      end
 
     School.delete(school_id)
 

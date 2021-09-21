@@ -13,9 +13,9 @@ h1 class="title" Schools
 
 div class="box"
     = for school <- schools do
-        a href="stor_ph"
         div class="div_block"
             h2 = school.name
             div class="div_links"
                 a href="/admin/school/#{school.school_id}" Show
                 a href="/admin/index/#{school.school_id}/delete" Remove
+
