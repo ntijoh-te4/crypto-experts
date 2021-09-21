@@ -1,2 +1,4 @@
-h2 "No password matching that username"
-a href="/login" Back
+div class="error"
+    div class="error-container"
+        h2 No password matching that username.
+        a href="/login" Back
