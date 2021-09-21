@@ -212,3 +212,13 @@ a{
 	flex-direction: column;
 	margin-left: 10%;
 }
+
+.answerpage{
+	width: 100%;
+	height: 14rem;
+	background-color: green;
+}
+
+.answerpage a{
+	text-align: center;
+}
